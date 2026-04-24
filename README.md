@@ -4,7 +4,8 @@ This repository contains the COMPX234 Assignment 1 solution for the producer-con
 
 ## Repository note
 
-This repository was recreated under the `zingpepiceapi` GitHub account after the previous GitHub account became unavailable. The assignment files were restored and checked before submission.
+This repository was recreated after my previous GitHub account became unavailable. 
+The implementation was migrated to this new account before the assignment deadline.
 
 ## Problem overview
 
@@ -46,4 +47,5 @@ During execution, machines send print requests and printers print requests from 
 - `Main.py`: starts the simulation.
 - `printDoc.py`: print request data object.
 - `printList.py`: linked-list print queue provided by the starter code.
-- `A1.md`: assignment specification.
+- `DESIGN.md`: synchronization design notes.
+- `short_verification.py`: short simulation runner for quick verification.
