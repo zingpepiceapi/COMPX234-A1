@@ -79,9 +79,11 @@ class Assignment1:
 
             print(f"Printer ID: {printerID} : now available")
             self.outer.queue_mutex.acquire()
-            self.outer.print_list.queuePrint(printerID)
-            self.outer.queue_mutex.release()
-            self.outer.empty_slots.release()
+            try:
+                self.outer.print_list.queuePrint(printerID)
+            finally:
+                self.outer.queue_mutex.release()
+                self.outer.empty_slots.release()
 
     # Machine class
     class machineThread(threading.Thread):
@@ -98,8 +100,10 @@ class Assignment1:
                     break
                 # Machine wakes up and sends a print request
                 if self.isRequestSafe(self.machineID):
-                    self.printRequest(self.machineID)
-                    self.postRequest(self.machineID)
+                    try:
+                        self.printRequest(self.machineID)
+                    finally:
+                        self.postRequest(self.machineID)
 
         def machineSleep(self):
             sleepSeconds = random.randint(1, self.outer.MAX_MACHINE_SLEEP)
